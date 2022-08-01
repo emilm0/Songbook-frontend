@@ -7,12 +7,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { AngularMaterialModule } from './anguar-material.module';
+import { LoginComponent } from './logger/login/login.component';
+import { LogoutComponent } from './logger/logout/logout.component';
+import { WelcomeComponent } from './logger/welcome/welcome.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    LogoutComponent,
+    WelcomeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     AngularMaterialModule,
