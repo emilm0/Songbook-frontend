@@ -1,19 +1,21 @@
 <div class="container">
-    <mat-toolbar class="long-navbar" color="primary">
-        <span class="title-box">Śpiewnik - Głos Pana</span>
-        <span class="example-spacer"></span>
-        <div class="buttons-box">
+    <mat-toolbar  color="primary">
+        <div>
+            <span class="title-box">Śpiewnik<a class="long-navbar"> - {{songbookName}}</a></span>
+            <mat-slide-toggle (change)="onDarkModeSwitch($event)">
+                <mat-icon *ngIf="isDark">light_mode</mat-icon>
+                <mat-icon *ngIf="!isDark">dark_mode</mat-icon>
+             </mat-slide-toggle>
+        </div>
+
+        <div id="buttons-box" class="long-navbar">
             <button *ngIf="isLoggin" mat-button >Mettings</button>
             <button *ngIf="isLoggin" mat-button>Editor</button>
             <button mat-button>Songbook</button>
             <button *ngIf="!isLoggin" mat-button>Login</button>
             <button *ngIf="isLoggin" mat-button>Logout</button>
         </div>
-    </mat-toolbar>
-    <mat-toolbar class="short-navbar" color="primary">
-        <span class="title-box">Śpiewnik</span>
-        <div class="buttons-box">
-            <button mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
+        <button class="short-navbar" mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
             <mat-menu #menu="matMenu">
                 <button *ngIf="isLoggin" mat-menu-item >Mettings</button>
                 <button *ngIf="isLoggin" mat-menu-item>Editor</button>
@@ -21,6 +23,5 @@
                 <button *ngIf="!isLoggin" mat-menu-item>Login</button>
                 <button *ngIf="isLoggin" mat-menu-item>Logout</button>
             </mat-menu>
-        </div>
     </mat-toolbar>
 </div>

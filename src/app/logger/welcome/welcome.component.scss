@@ -1,0 +1,5 @@
+@import "/src/assets/scss/mixins";
+
+.container {
+    @include basic-div;
+}
