@@ -1,0 +1,9 @@
+@mixin basic-div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    
+}

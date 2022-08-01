@@ -1,0 +1,30 @@
+@import "/src/assets/scss/variables";
+
+@media only screen and (max-width: $medium-width){
+    .long-navbar {  display: none  }
+}
+@media only screen and (min-width: $medium-width){
+    .short-navbar { display: none }
+}
+span {
+    font-size: 30px;
+}
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+mat-toolbar {
+    height: $bar-height;
+    width: 100vw;
+    justify-content: space-between;
+}
+button {
+    font-size: large;
+}
+.buttons-box {
+    margin-right: 20px;
+}
+.title-box {
+    margin-left: 20px;
+}

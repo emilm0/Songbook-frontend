@@ -1,0 +1,26 @@
+<div class="container">
+    <mat-toolbar class="long-navbar" color="primary">
+        <span class="title-box">Śpiewnik - Głos Pana</span>
+        <span class="example-spacer"></span>
+        <div class="buttons-box">
+            <button *ngIf="isLoggin" mat-button >Mettings</button>
+            <button *ngIf="isLoggin" mat-button>Editor</button>
+            <button mat-button>Songbook</button>
+            <button *ngIf="!isLoggin" mat-button>Login</button>
+            <button *ngIf="isLoggin" mat-button>Logout</button>
+        </div>
+    </mat-toolbar>
+    <mat-toolbar class="short-navbar" color="primary">
+        <span class="title-box">Śpiewnik</span>
+        <div class="buttons-box">
+            <button mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
+            <mat-menu #menu="matMenu">
+                <button *ngIf="isLoggin" mat-menu-item >Mettings</button>
+                <button *ngIf="isLoggin" mat-menu-item>Editor</button>
+                <button mat-menu-item>Songbook</button>
+                <button *ngIf="!isLoggin" mat-menu-item>Login</button>
+                <button *ngIf="isLoggin" mat-menu-item>Logout</button>
+            </mat-menu>
+        </div>
+    </mat-toolbar>
+</div>

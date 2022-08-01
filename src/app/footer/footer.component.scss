@@ -1,0 +1,14 @@
+@import "/src/assets/scss/variables";
+
+mat-toolbar {
+    position: relative;
+    bottom: 0;
+    width: 100vw;
+    height: $bar-height;
+    display: flex;
+    justify-content: center;
+}
+span {
+    font-size: smaller;
+    white-space: pre-wrap;
+}
