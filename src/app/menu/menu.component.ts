@@ -12,8 +12,8 @@ export class MenuComponent implements OnInit {
   readonly darkModeSwitch = new EventEmitter<boolean>();
 
   public songbookName = "Głos Pana";
-  public isLoggin = true;
-  public isDark = false;
+  public isLogin = true;
+  public isDark = true;
 
   constructor() { }
 
@@ -23,6 +23,10 @@ export class MenuComponent implements OnInit {
   onDarkModeSwitch({ checked }: MatSlideToggleChange) {
     this.isDark = checked;
    this.darkModeSwitch.emit(checked);
+  }
+
+  public logoutUser(): void {
+    this.isLogin = !this.isLogin
   }
 
 }

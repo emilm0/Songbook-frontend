@@ -8,7 +8,7 @@ import { Component, HostBinding } from '@angular/core';
 export class AppComponent {
   title = 'Songbook-frontend';
 
-  private isDark = false;
+  private isDark = true;
 
   @HostBinding('class')
   get themeMode() {
