@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './anguar-material.module';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 //components
 import { AppComponent } from './app.component';
@@ -14,6 +14,7 @@ import { LoginComponent } from './logger/login/login.component';
 import { LogoutComponent } from './logger/logout/logout.component';
 import { WelcomeComponent } from './logger/welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 
 
@@ -34,7 +35,13 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

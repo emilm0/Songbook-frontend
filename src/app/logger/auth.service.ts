@@ -1,34 +1,40 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { throwError, map } from 'rxjs';
-import { LoggedUser } from './LoggedUser';
+import { AuthInterceptor } from '../interceptors/auth.interceptor';
+import { LoginRequest } from './Requests/LoginRequest';
+import { AuthenticatedUser } from './Response/AuthenticatedUser';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   
-  private readonly auhtUrl = 'https://localhost:7081/api/auth';
+  private readonly authUrl = 'https://localhost:7014/api/auth';
   private readonly JWT_TOKEN = 'JWT_TOKEN';
-  public loggedUser = new LoggedUser('','');
+  public message = '';
 
   constructor(private http: HttpClient) {  }
 
-  login(email: string, password: string) {
-    return this.http.post(this.auhtUrl + '/login', {"email": email, "password": password})
-              .pipe(
-                map((res: any) => { return this.loggedUser = res;})
-              ).subscribe(() => {
-                 this.storeToken(this.loggedUser.jwtToken);
-                });
+  login(loginRequest: LoginRequest) {
+    return this.http.post(this.authUrl + '/login', loginRequest, {withCredentials: true})
+                    .subscribe((res: any) => {
+                        this.authenticateUser(res)
+                      });
   }
 
-  getJwtToken() {
-    return localStorage.getItem(this.JWT_TOKEN);
+  authenticateUser(authenticatedUser: AuthenticatedUser){
+    AuthInterceptor.accessToken = authenticatedUser.accessToken;
+    AuthInterceptor.refreshToken = authenticatedUser.refreshToken;
   }
 
-  private storeToken(token: string){
-     localStorage.setItem(this.JWT_TOKEN, token);
+  getUsers() {
+    this.http.get(this.authUrl + '/Users')
+        .subscribe(
+          (res: any) => {
+            this.message = `Hi ${res.userName}`;
+            console.log(this.message)
+          }
+        )
   }
   
 }
