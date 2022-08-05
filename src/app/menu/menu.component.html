@@ -9,19 +9,19 @@
         </div>
 
         <div id="buttons-box" class="long-navbar">
-            <button *ngIf="isLogin" mat-button >Mettings</button>
-            <button *ngIf="isLogin" mat-button>Editor</button>
-            <button mat-button>Songbook</button>
-            <button *ngIf="!isLogin" [routerLink]="['/login']" (click)="logoutUser()" mat-button>Login</button>
-            <button *ngIf="isLogin" [routerLink]="['/logout']" (click)="logoutUser()" mat-button>Logout</button>
+            <button *ngIf="isLogin()" mat-button >Mettings</button>
+            <button *ngIf="isLogin()" mat-button>Editor</button>
+            <button (click)="getUsers()" mat-button>Songbook</button>
+            <button *ngIf="!isLogin()" (click)="goToLogin()" mat-button>Login</button>
+            <button *ngIf="isLogin()" (click)="logoutUser()" mat-button>Logout</button>
         </div>
         <button class="short-navbar" mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
             <mat-menu #menu="matMenu">
-                <button *ngIf="isLogin" mat-menu-item >Mettings</button>
-                <button *ngIf="isLogin" mat-menu-item>Editor</button>
+                <button *ngIf="isLogin()" mat-menu-item >Mettings</button>
+                <button *ngIf="isLogin()" mat-menu-item>Editor</button>
                 <button mat-menu-item>Songbook</button>
-                <button *ngIf="!isLogin" [routerLink]="['/login']" (click)="logoutUser()" mat-menu-item>Login</button>
-                <button *ngIf="isLogin" [routerLink]="['/logout']" (click)="logoutUser()" mat-menu-item>Logout</button>
+                <button *ngIf="!isLogin()" (click)="goToLogin()" mat-menu-item>Login</button>
+                <button *ngIf="isLogin()" (click)="logoutUser()" mat-menu-item>Logout</button>
             </mat-menu>
     </mat-toolbar>
 </div>

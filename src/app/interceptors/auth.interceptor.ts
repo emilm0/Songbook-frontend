@@ -5,59 +5,47 @@ import {
   HttpEvent,
   HttpInterceptor,
   HttpErrorResponse,
-  HttpClient,
   } from '@angular/common/http';
-import { catchError, Observable, throwError, switchMap } from 'rxjs';
+import { catchError, Observable, throwError, mergeMap } from 'rxjs';
+import { AuthService } from '../logger/auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  private readonly authUrl = 'https://localhost:7014/api/auth';
-  static accessToken = '';
-  static refreshToken = '';
-
-  constructor(private http: HttpClient) {}
+  constructor(private authService: AuthService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const req = request.clone({
-      setHeaders: {
-        Authorization: `Bearer ${AuthInterceptor.accessToken}`
-      }
-    });
+    if(this.authService.accessToken === ''){
+      return next.handle(request); 
+    }
+
+    var req = this.setAuthorizationHeader(request, this.authService.accessToken);
 
     return next.handle(req).pipe(catchError((err: HttpErrorResponse) => {
       if(err.status === 401) {
 
-        console.log('*****Interceptor refresh token*****');
+        return this.authService.renewAccessToken(this.authService.refreshToken).pipe(
+          mergeMap((response: any) => {
+            this.authService.accessToken = response.accessToken;
+            this.authService.refreshToken = response.refreshToken;
+            var req = this.setAuthorizationHeader(request, this.authService.accessToken);
 
-        this.http.post(this.authUrl + '/refresh', {"refreshToken": AuthInterceptor.refreshToken}, {withCredentials: true})
-                 .subscribe((res: any) => {
-                  
-                  console.log('new access token - ' + res.accessToken)
-                  
-                  AuthInterceptor.accessToken = res.accessToken;
-                  
-                  return next.handle(request.clone({
-                    setHeaders: {
-                      Authorization: `Bearer ${AuthInterceptor.accessToken}`
-                    }
-                  }))
-                })
-        }
-        console.log('*****Interceptor token is valid*****');
-
-        return throwError(() => err);
+            return next.handle(req);            
+          })
+        )
+      }
+            
+      return throwError(() => err);
     }));  
-        // pipe(
-        //   switchMap((res: any) => {
-        //     console.log('new access token - ' + res.accessToken)
-        //     AuthInterceptor.accessToken = res.accessToken;
-        //     return next.handle(request.clone({
-        //       setHeaders: {
-        //         Authorization: `Bearer ${AuthInterceptor.accessToken}`
-        //       }
-        //     }))
-        //   }));
-      
+  }
+
+  setAuthorizationHeader(request: HttpRequest<unknown>, token: string): HttpRequest<unknown> {
+    var req = request.clone({
+      setHeaders: {
+        Authorization: `bearer ${token}`
+      }
+    });
+
+    return req;
   }
 }

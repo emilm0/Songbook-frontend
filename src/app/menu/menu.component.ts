@@ -1,5 +1,7 @@
 import { Component, EventEmitter, HostBinding, OnInit, Output } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { Router } from '@angular/router';
+import { AuthService } from '../logger/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -12,21 +14,34 @@ export class MenuComponent implements OnInit {
   readonly darkModeSwitch = new EventEmitter<boolean>();
 
   public songbookName = "Głos Pana";
-  public isLogin = true;
   public isDark = true;
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  isLogin(): boolean {
+    return this.authService.isLoginUser();
+  }
+
   onDarkModeSwitch({ checked }: MatSlideToggleChange) {
     this.isDark = checked;
-   this.darkModeSwitch.emit(checked);
+    this.darkModeSwitch.emit(checked);
   }
 
   public logoutUser(): void {
-    this.isLogin = !this.isLogin
+    this.authService.logout();
+    this.router.navigate(['logout']);
+  }
+
+  goToLogin(): void {
+    this.router.navigate(['login']);
+  }
+
+  //test method
+  getUsers(){
+    this.authService.getUsers();
   }
 
 }
