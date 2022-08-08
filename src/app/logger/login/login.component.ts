@@ -25,9 +25,10 @@ export class LoginComponent implements OnInit {
     loginRequest.email = this.setFormControlIfNull(this.emailFormControl)
     loginRequest.password = this.setFormControlIfNull(this.passwordFormControl)
     
-    this.authService.login(loginRequest);
+    this.authService.login(loginRequest).subscribe(() =>
+      this.router.navigate(['welcome'])
+    );
 
-    this.router.navigate(['welcome']);
   }
 
   private setFormControlIfNull(formControl: FormControl): string {

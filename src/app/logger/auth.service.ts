@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { ErrorHandler, Injectable } from '@angular/core';
 import { LoginRequest } from './Requests/LoginRequest';
 import { AuthenticatedUser } from './Response/AuthenticatedUser';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, tap } from 'rxjs';
+import { MessageService } from '../services/message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,19 +11,19 @@ import { Observable } from 'rxjs';
 export class AuthService {
   
   private readonly authUrl = 'https://localhost:7014/api/auth';
-  private readonly JWT_TOKEN = 'JWT_TOKEN';
 
   public accessToken = '';
   public refreshToken = '';
-  public username = 'aaaa';
+  public username = '';
 
-  constructor(private http: HttpClient) {  }  
+  constructor(private http: HttpClient, private messageService: MessageService) {  }  
 
   login(loginRequest: LoginRequest) {
     return this.http.post(this.authUrl + '/login', loginRequest, {withCredentials: true})
-                    .subscribe((res: any) => {
-                        this.authenticateUser(res)
-                      });
+                    .pipe( 
+                      tap((res: any) => {this.authenticateUser(res) }),
+                      catchError(this.messageService.handleError('Login'))
+                    );
   }
 
   isLoginUser(): boolean {
@@ -38,21 +39,25 @@ export class AuthService {
     console.log('username  - ' + this.username);
   }
 
-  renewAccessToken(refreshTokenRequest: string): Observable<unknown> {
+  renewAccessToken(refreshTokenRequest: string): Observable<any> {
    return this.http.post(this.authUrl + '/refresh',
                   {'refreshToken': refreshTokenRequest },
-                  {withCredentials: true})
+                  {withCredentials: true}).pipe(
+                    catchError(this.messageService.handleError('Refresh token'))
+                    )
+
   }
 
   logout() {
-    this.http.delete(this.authUrl + '/logout' ).subscribe();
-    this.accessToken = '';
-    this.refreshToken = '';
+    return this.http.delete(this.authUrl + '/logout' ).pipe(
+      catchError(this.messageService.handleError('Logout'))
+    );
   }
 
   getUsers() {
-    this.http.get(this.authUrl + '/Users')
-        .subscribe()
+    return this.http.get(this.authUrl + '/Users').pipe(
+      catchError(this.messageService.handleError('Get users'))
+    )  
   }
   
 }

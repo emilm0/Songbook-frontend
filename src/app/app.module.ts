@@ -15,7 +15,7 @@ import { LogoutComponent } from './logger/logout/logout.component';
 import { WelcomeComponent } from './logger/welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-
+import { MessageComponent } from './message/message.component';
 
 
 @NgModule({
@@ -26,7 +26,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     LoginComponent,
     LogoutComponent,
     WelcomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    MessageComponent
   ],
   imports: [
     AngularMaterialModule,

@@ -30,8 +30,10 @@ export class MenuComponent implements OnInit {
     this.darkModeSwitch.emit(checked);
   }
 
-  public logoutUser(): void {
-    this.authService.logout();
+  public logoutUser() {
+    this.authService.logout().subscribe();
+    this.authService.accessToken = '';
+    this.authService.refreshToken = '';
     this.router.navigate(['logout']);
   }
 
@@ -41,7 +43,7 @@ export class MenuComponent implements OnInit {
 
   //test method
   getUsers(){
-    this.authService.getUsers();
+    this.authService.getUsers().subscribe();
   }
 
 }
