@@ -41,7 +41,8 @@ import { MessageComponent } from './message/message.component';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    }, 
+    
   ],
   bootstrap: [AppComponent]
 })

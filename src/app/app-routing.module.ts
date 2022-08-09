@@ -4,12 +4,13 @@ import { LogoutComponent } from './logger/logout/logout.component';
 import { LoginComponent } from './logger/login/login.component';
 import { WelcomeComponent } from './logger/welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { RouteGuardService } from './logger/route-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
-  { path: 'welcome', component: WelcomeComponent },
+  { path: 'welcome', component: WelcomeComponent, canActivate: [RouteGuardService]},
   { path: '**', component: PageNotFoundComponent }
 ];
 

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { ErrorHandler, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { LoginRequest } from './Requests/LoginRequest';
 import { AuthenticatedUser } from './Response/AuthenticatedUser';
 import { catchError, map, Observable, tap } from 'rxjs';
@@ -34,9 +34,6 @@ export class AuthService {
     this.accessToken = authenticatedUser.accessToken;
     this.refreshToken = authenticatedUser.refreshToken;
     this.username = authenticatedUser.username;
-    console.log('accessToken - ' + this.accessToken);
-    console.log('refreshToken - ' + this.refreshToken);
-    console.log('username  - ' + this.username);
   }
 
   renewAccessToken(refreshTokenRequest: string): Observable<any> {
@@ -45,7 +42,6 @@ export class AuthService {
                   {withCredentials: true}).pipe(
                     catchError(this.messageService.handleError('Refresh token'))
                     )
-
   }
 
   logout() {
