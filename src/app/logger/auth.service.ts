@@ -45,10 +45,7 @@ export class AuthService {
   }
 
   logout() {
-    return this.http.delete(this.authUrl + '/logout' ).pipe(
-      
-      // catchError(this.messageService.handleError('Logout'))
-    );
+    return this.http.delete(this.authUrl + '/logout' )
   }
 
   getUsers() {
