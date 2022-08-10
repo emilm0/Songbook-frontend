@@ -15,7 +15,7 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    if(this.authService.accessToken === ''){
+    if(this.authService.accessToken === '') {
       return next.handle(request); 
     }
 
@@ -23,6 +23,10 @@ export class AuthInterceptor implements HttpInterceptor {
 
     return next.handle(req).pipe(catchError((err: HttpErrorResponse) => {
       if(err.status === 401) {
+
+        if(this.authService.accessToken === '') {
+          return throwError(() => err );
+        }
 
         return this.authService.renewAccessToken(this.authService.refreshToken).pipe(
           mergeMap((response: any) => {

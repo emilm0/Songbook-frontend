@@ -33,7 +33,7 @@ export class MenuComponent implements OnInit {
   public logoutUser() {
     this.authService.logout().subscribe();
     this.authService.accessToken = '';
-    this.authService.refreshToken = '';
+    this.authService.username = '';
     this.router.navigate(['logout']);
   }
 

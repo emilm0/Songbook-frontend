@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginRequest } from './Requests/LoginRequest';
 import { AuthenticatedUser } from './Response/AuthenticatedUser';
-import { catchError, map, Observable, tap } from 'rxjs';
+import { catchError, Observable, tap } from 'rxjs';
 import { MessageService } from '../services/message.service';
 
 @Injectable({
@@ -46,7 +46,8 @@ export class AuthService {
 
   logout() {
     return this.http.delete(this.authUrl + '/logout' ).pipe(
-      catchError(this.messageService.handleError('Logout'))
+      
+      // catchError(this.messageService.handleError('Logout'))
     );
   }
 
