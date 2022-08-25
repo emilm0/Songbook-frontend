@@ -16,6 +16,9 @@ import { WelcomeComponent } from './logger/welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { MessageComponent } from './message/message.component';
+import { SongListComponent } from './songs/song-list/song-list.component';
+import { SongDetailsComponent } from './songs/song-details/song-details.component';
+import { LyricComponent } from './songs/lyric/lyric.component';
 
 
 @NgModule({
@@ -27,7 +30,10 @@ import { MessageComponent } from './message/message.component';
     LogoutComponent,
     WelcomeComponent,
     PageNotFoundComponent,
-    MessageComponent
+    MessageComponent,
+    SongListComponent,
+    SongDetailsComponent,
+    LyricComponent
   ],
   imports: [
     AngularMaterialModule,
