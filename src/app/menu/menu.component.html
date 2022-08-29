@@ -11,7 +11,7 @@
         <div id="buttons-box" class="long-navbar">
             <button *ngIf="isLogin()" mat-button >Mettings</button>
             <button *ngIf="isLogin()" mat-button>Editor</button>
-            <button (click)="getUsers()" mat-button>Songbook</button>
+            <button (click)="goToSongbook()" mat-button>Songbook</button>
             <button *ngIf="!isLogin()" (click)="goToLogin()" mat-button>Login</button>
             <button *ngIf="isLogin()" (click)="logoutUser()" mat-button>Logout</button>
         </div>

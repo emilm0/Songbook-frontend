@@ -1,1 +1,30 @@
-<p>song-list works!</p>
+<div class="container">
+    <div class="header">
+        <h1>All songs</h1>
+        <mat-radio-group aria-label="Select an option"
+        [(ngModel)]="typeList">
+         <mat-radio-button value="List">List</mat-radio-button>
+         <mat-radio-button value="Tabs">Tabs</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <mat-card id="list" *ngIf="typeList === 'List'">
+        <mat-list>
+            <div *ngFor="let character of alphabet">  
+                <div mat-subheader>{{character}}</div>
+                <mat-list-item *ngFor="let song of songsWithTheSameFirstLetter(character)">
+                    <div mat-line>{{song.signature}} - {{song.title}}</div>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+            </div>
+        </mat-list>
+    </mat-card>
+    <mat-card id="tab" *ngIf="typeList === 'Tabs'">
+        <mat-tab-group animationDuration="0ms">
+            <mat-tab *ngFor="let character of alphabet" label={{character}}>
+                <div class="oneSong" *ngFor="let song of songsWithTheSameFirstLetter(character)">
+                    {{song.signature}} - {{song.title}}
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card>
+</div>

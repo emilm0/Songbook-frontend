@@ -40,7 +40,10 @@ export class MenuComponent implements OnInit {
   goToLogin(): void {
     this.router.navigate(['login']);
   }
-
+  
+  goToSongbook(): void {
+    this.router.navigate(['songbook']);
+  }
   //test method
   getUsers(){
     this.authService.getUsers().subscribe();

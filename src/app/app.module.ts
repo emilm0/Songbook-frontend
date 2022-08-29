@@ -19,6 +19,7 @@ import { MessageComponent } from './message/message.component';
 import { SongListComponent } from './songs/song-list/song-list.component';
 import { SongDetailsComponent } from './songs/song-details/song-details.component';
 import { LyricComponent } from './songs/lyric/lyric.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { LyricComponent } from './songs/lyric/lyric.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     {

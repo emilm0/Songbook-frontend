@@ -1,6 +1,6 @@
-import { FormGroupDirective } from "@angular/forms";
+import { Line } from "../Line";
 
-export interface Song {
+export interface SongResponse {
     id: string;
     signature: string;
     title: string;
@@ -24,4 +24,5 @@ export interface Song {
     isInUse: boolean;
     lastUsed: Date;
     counterOfUse: number;
+    lines: Array<Line>;
 }

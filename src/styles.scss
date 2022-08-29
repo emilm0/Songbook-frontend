@@ -46,3 +46,6 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif}
 // .mat-drawer-content {overflow: hidden !important;}
 mat-sidenav-content {width: 100%;}
+app-song-list {
+  .mat-tab-label {min-width: 10px ; max-width: 20px;}
+}
