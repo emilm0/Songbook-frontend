@@ -17,7 +17,5 @@ export class AppComponent {
 
   switchMode(isDarkMode: boolean) {
     this.isDark = isDarkMode;
-    console.log("is Dark = " + this.isDark);
-
   }
 }

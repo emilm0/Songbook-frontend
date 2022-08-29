@@ -44,9 +44,5 @@ export class MenuComponent implements OnInit {
   goToSongbook(): void {
     this.router.navigate(['songbook']);
   }
-  //test method
-  getUsers(){
-    this.authService.getUsers().subscribe();
-  }
 
 }

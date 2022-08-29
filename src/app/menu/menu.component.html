@@ -2,9 +2,8 @@
     <mat-toolbar  color="primary">
         <div>
             <span class="title-box">Śpiewnik<a class="long-navbar"> - {{songbookName}}</a></span>
-            <mat-slide-toggle (change)="onDarkModeSwitch($event)">
-                <mat-icon *ngIf="isDark">light_mode</mat-icon>
-                <mat-icon *ngIf="!isDark">dark_mode</mat-icon>
+            <mat-slide-toggle (change)="onDarkModeSwitch($event)" [checked]="true">
+                <mat-icon>dark_mode</mat-icon>
              </mat-slide-toggle>
         </div>
 
