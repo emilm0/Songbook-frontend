@@ -13,7 +13,7 @@ export class SongListComponent implements OnInit {
     'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'W', 'Z'];
 
   songs: SongResponse[] = [];
-  typeList = "List";
+  typeList = "Tabs";
 
   constructor(private songService: SongService) { }
 

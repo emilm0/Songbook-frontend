@@ -2,7 +2,9 @@
   <app-menu (darkModeSwitch)="switchMode($event)"></app-menu>
   <mat-sidenav-container class="body-container">
     <app-message></app-message>
-    <router-outlet></router-outlet>
+    <div class="routerOutlet">
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-container>
   <app-footer></app-footer>
 </div>

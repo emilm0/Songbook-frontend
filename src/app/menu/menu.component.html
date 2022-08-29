@@ -18,7 +18,7 @@
             <mat-menu #menu="matMenu">
                 <button *ngIf="isLogin()" mat-menu-item >Mettings</button>
                 <button *ngIf="isLogin()" mat-menu-item>Editor</button>
-                <button mat-menu-item>Songbook</button>
+                <button (click)="goToSongbook()" mat-menu-item>Songbook</button>
                 <button *ngIf="!isLogin()" (click)="goToLogin()" mat-menu-item>Login</button>
                 <button *ngIf="isLogin()" (click)="logoutUser()" mat-menu-item>Logout</button>
             </mat-menu>

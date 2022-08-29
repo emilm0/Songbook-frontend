@@ -42,7 +42,7 @@ export class MenuComponent implements OnInit {
   }
   
   goToSongbook(): void {
-    this.router.navigate(['songbook']);
+    this.router.navigate(['songs']);
   }
 
 }

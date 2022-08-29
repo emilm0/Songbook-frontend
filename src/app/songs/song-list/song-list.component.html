@@ -12,7 +12,7 @@
             <div *ngFor="let character of alphabet">  
                 <div mat-subheader>{{character}}</div>
                 <mat-list-item *ngFor="let song of songsWithTheSameFirstLetter(character)">
-                    <div mat-line>{{song.signature}} - {{song.title}}</div>
+                    <a [routerLink]="['/song', song.id]" mat-line>{{song.signature}} - {{song.title}}</a>
                 </mat-list-item>
                 <mat-divider></mat-divider>
             </div>
@@ -22,7 +22,7 @@
         <mat-tab-group animationDuration="0ms">
             <mat-tab *ngFor="let character of alphabet" label={{character}}>
                 <div class="oneSong" *ngFor="let song of songsWithTheSameFirstLetter(character)">
-                    {{song.signature}} - {{song.title}}
+                    <a [routerLink]="['/song', song.id]" mat-line> {{song.signature}} - {{song.title}}</a>
                 </div>
             </mat-tab>
         </mat-tab-group>

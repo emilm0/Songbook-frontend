@@ -1,0 +1,47 @@
+@import "/src/assets/scss/mixins.scss";
+
+.container {
+    @include basic-div;
+}
+
+.navBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 5px 10px 5px 10px;
+    margin-bottom: 10px;
+    min-width: 60vw;
+}
+mat-card{
+    padding: 0;
+}
+.songDetails {
+    min-width: 60vw;
+}
+
+mat-card-header {
+    font-size: 28px;
+    padding: 20px;
+}
+
+mat-card-content {
+    padding: 10px;
+}
+
+.signature {
+    padding: 10px;
+    font-size: 24px;
+}
+
+.title {
+    padding: 10px 20px 10px 20px;
+    font-size: 20px;
+    width: 100%;
+}
+b {
+    font-weight: 550;
+}
+
+h2 {
+    margin-bottom: 0px;
+}

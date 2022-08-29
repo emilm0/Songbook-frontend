@@ -36,3 +36,11 @@
     margin-left: 16px;
 }  
 
+a {
+    color: inherit;
+    text-decoration: none;
+}
+a:hover {
+    transform: scale(1.5);
+    color: darkcyan;
+}

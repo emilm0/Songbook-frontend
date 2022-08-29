@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap, catchError } from 'rxjs';
 import { MessageService } from 'src/app/services/message.service';
 import { SongResponse } from '../models/responses/SongResponse';
 
@@ -19,19 +19,19 @@ export class SongService {
     /** GET songs from the server  */
     getSongs(): Observable<SongResponse[]> {
       return this.http.get<SongResponse[]>(this.songsUrl)
-      // .pipe(
-      //   tap(_ => this.log('fetched songs')),
-      //   catchError(this.handleError<Song[]>('getSongs', []))
-      // );
+      .pipe(
+        tap(_ => this.messageService.addMessage('fetched songs')),
+        catchError(this.messageService.handleError('getSongs', []))
+      );
     }
   
     /** GET song by id. Will 404 if id not found */
     getSong(id: string): Observable<SongResponse> {
       const url = `${this.songsUrl}/${id}`;
       return this.http.get<SongResponse>(url)
-      // .pipe(
-      //   tap(_ => this.log(`fetched song id=${id}`)),
-      //   catchError(this.handleError<SongResponse>(`getSong id =${id}`))
-      // );
+      .pipe(
+        tap(_ => this.messageService.addMessage(`fetched song id=${id}`)),
+        catchError(this.messageService.handleError<SongResponse>(`getSong id =${id}`))
+      );
     }
 }

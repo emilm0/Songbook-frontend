@@ -1,1 +1,51 @@
-<p>song-details works!</p>
+<div class="container">
+    <mat-card class="navBar">
+        <button mat-button class="navBtn" >Back</button>
+        <button mat-button class="navBtn" >Previous</button>
+        <button mat-button class="navBtn" >Next</button>
+        <button mat-button class="navBtn" >Print</button>
+    </mat-card>
+    <div *ngIf="song">
+        <mat-card>
+            <mat-card-header class="titleBar">
+                    {{song.signature}} - {{song.title}}
+            </mat-card-header>
+            <mat-card-content class="songDetails">
+                <div class="lirycBox">
+                    <app-lyric></app-lyric>
+                </div>
+                <button mat-button (click)="changeVisibleDetails()">
+                    Details
+                    <mat-icon [@rotatedState]="!isVisibleDetails? 'default': 'rotated'" id="angleDown">
+                        keyboard_arrow_down
+                    </mat-icon>
+                </button>
+                <div [@smoothCollapse]="!isVisibleDetails? 'initial': 'final'" class="detailsBoc">
+                    <ul id="basicDetails">
+                        <li><b>Author: </b> {{song.author}}</li>
+                        <li><b>Based on: </b> {{song.basedOn}}</li>
+                        <li><b>Translator: </b> {{song.translator}}</li>
+                        <li><b>Original title: </b> {{song.titleOrigin}} </li>
+                        <li><b>Copyright: </b> {{song.copyright}}</li>
+                        <li><b>Gropu: </b> {{song.group}} </li>
+                        <li><b>Type: </b> {{song.type}} </li>
+                        <br>
+                        <h2>Links:</h2>
+                        <li><b>Polish version: </b> <a href="">{{song.urlPl}}</a></li>
+                        <li><b>Original version: </b> <a href="">{{song.urlOrigin}}</a> </li>
+                        
+                        <li *ngIf="isLogIn"><b>Link to Drive: </b> <a href="">{{song.urlDrive}}</a> </li>
+                        <li *ngIf="isLogIn"><b>Link to notes: </b> <a href="">{{song.urlNotes}}</a> </li>
+                        <li *ngIf="isLogIn"><b>Add time: </b> {{song.createTime | date:'shortDate'}}</li>
+                    </ul>
+                    <ul *ngIf="isLogIn">
+                        <!-- <li><b>Edit time: </b> {{song.editTime | date:'shortDate'}}</li>
+                        <li><b>Editor name: </b> {{song.editorName}}</li>
+                        <li><b>Edit content: </b> {{song.editContent}}</li>
+                        <li><b>Times of use: </b> {{song.timesOfUse}}</li> -->
+                    </ul>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
