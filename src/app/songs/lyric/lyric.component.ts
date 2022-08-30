@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Line } from '../models/Line';
+import { LineService } from '../services/line.service';
 
 @Component({
   selector: 'app-lyric',
@@ -7,7 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LyricComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  lines: Line[] = [];
+  checkedOriginLines = false;
+  chordsPositions = ['Right', 'Top', 'None'];
+  activatedChordsPosition = 'None';
+  constructor(
+    private lineService: LineService
+  ) { }
 
   ngOnInit(): void {
   }

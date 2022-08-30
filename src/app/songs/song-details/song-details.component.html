@@ -1,6 +1,6 @@
 <div class="container">
     <mat-card class="navBar">
-        <button mat-button class="navBtn" >Back</button>
+        <button mat-button class="navBtn" (click)="goToSongbook()">Back</button>
         <button mat-button class="navBtn" >Previous</button>
         <button mat-button class="navBtn" >Next</button>
         <button mat-button class="navBtn" >Print</button>
@@ -12,7 +12,7 @@
             </mat-card-header>
             <mat-card-content class="songDetails">
                 <div class="lirycBox">
-                    <app-lyric></app-lyric>
+                    <app-lyric [lines]="song.lines"></app-lyric>
                 </div>
                 <button mat-button (click)="changeVisibleDetails()">
                     Details

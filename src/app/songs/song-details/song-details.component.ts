@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { Router, ActivatedRoute } from '@angular/router';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Song } from '../models/Song';
-import { Line } from '../models/Line';
 import { SongService } from '../services/song.service';
 import { SongResponse } from '../models/responses/SongResponse';
 
@@ -35,10 +32,8 @@ import { SongResponse } from '../models/responses/SongResponse';
 export class SongDetailsComponent implements OnInit {
 
   song: SongResponse | undefined;
-  // songLines: Line[];
   isVisibleDetails = false;
   isLogIn = true;
-  // faAngleDown = faAngleDown;
 
   constructor(
     private router: Router,
@@ -55,8 +50,8 @@ export class SongDetailsComponent implements OnInit {
     this.songService.getSong(id).
       subscribe(song => this.song = song);
   }
-  gotoSongs(song: Song): void {
-    const songId = song ? song.id : null;
+  goToSongbook(): void {
+    const songId = this.song ? this.song.id : null;
     this.router.navigate(['/songs', { id: songId }]);
   }
 

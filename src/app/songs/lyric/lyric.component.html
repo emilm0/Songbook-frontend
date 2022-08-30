@@ -1,1 +1,32 @@
-<p>lyric works!</p>
+<div class="navBar">
+    <div class="radioButtons">
+        <label for="chordsRadio">Chords:</label>
+            <mat-radio-group aria-label="Select an option" id="chordsRadio"
+            [(ngModel)]="activatedChordsPosition">
+            <mat-radio-button *ngFor="let chordsPosition of chordsPositions" [value]="chordsPosition">
+                {{chordsPosition}}
+            </mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <div class="checkOriginal">
+        <mat-checkbox [(ngModel)]="checkedOriginLines">Original</mat-checkbox>
+    </div>
+</div>
+<div>
+</div>
+<div class="linesContainer">
+    <ul id="plLines">
+        <li *ngFor="let line of lines">
+            <b *ngIf="activatedChordsPosition === 'Top'"> {{line.chords}} <br> </b>
+            {{line.text}}  
+            <b *ngIf="activatedChordsPosition === 'Right'">{{line.chords}}</b>
+        </li>
+    </ul>
+    <ul *ngIf="checkedOriginLines" id="originLines">
+        <li *ngFor="let line of lines">
+            <b class="top" *ngIf="activatedChordsPosition === 'Top'"> {{line.chords}} <br> </b>
+            {{line.textOrigin}} 
+            <b class="top" *ngIf="activatedChordsPosition === 'Right'">{{line.chordsOrigin}}</b>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,65 @@
+.navBar {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 5px;
+}
+.radioButtons {
+    display: flex;
+    align-items: baseline;
+    padding: 5px;    
+}
+:host ::ng-deep .mat-radio-container{
+    height: 15px;
+    width: 15px;
+  }
+  :host ::ng-deep .mat-radio-outer-circle{
+    height: 15px;
+    width: 15px;
+  }
+  :host ::ng-deep .mat-radio-inner-circle{
+    height: 15px;
+    width: 15px;
+  }
+  :host ::ng-deep .mat-radio-button .mat-radio-ripple{
+    height: 30px; /*double of your required circle radius*/
+    width: 30px;  /*double of your required circle radius*/
+    left: calc(50% - 15px); /*'15px'-same as your required circle radius*/
+    top: calc(50% - 15px); /*'15px'-same as your required circle radius*/
+  }
+
+.radioButtons label {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+mat-radio-button {
+    padding-left: 10px;
+}
+
+.checkOriginal {
+    margin: 0 5px 0 5px;
+}
+
+.linesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+    white-space: pre;
+}
+.linesContainer ul {
+    min-width: 45%;
+    list-style: none;
+    padding: 15px;
+}
+.linesContainer li {
+    display: block;
+    font-size: 24px;
+    padding: 3px;
+    margin-bottom: 3px;
+}
+b {
+    font-size: 0.9em;
+}
