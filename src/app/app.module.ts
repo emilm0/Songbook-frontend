@@ -16,10 +16,11 @@ import { WelcomeComponent } from './logger/welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { MessageComponent } from './message/message.component';
-import { SongListComponent } from './songs/song-list/song-list.component';
-import { SongDetailsComponent } from './songs/song-details/song-details.component';
-import { LyricComponent } from './songs/lyric/lyric.component';
+import { SongListComponent } from './songs/components/song-list/song-list.component';
+import { SongDetailsComponent } from './songs/components/song-details/song-details.component';
+import { LyricComponent } from './songs/components/lyric/lyric.component';
 import { FormsModule } from '@angular/forms';
+import { CreateSongComponent } from './songs/components/create-song/create-song.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { FormsModule } from '@angular/forms';
     MessageComponent,
     SongListComponent,
     SongDetailsComponent,
-    LyricComponent
+    LyricComponent,
+    CreateSongComponent
   ],
   imports: [
     AngularMaterialModule,

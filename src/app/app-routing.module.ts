@@ -5,8 +5,8 @@ import { LoginComponent } from './logger/login/login.component';
 import { WelcomeComponent } from './logger/welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RouteGuardService } from './logger/route-guard.service';
-import { SongListComponent } from './songs/song-list/song-list.component';
-import { SongDetailsComponent } from './songs/song-details/song-details.component';
+import { SongListComponent } from './songs/components/song-list/song-list.component';
+import { SongDetailsComponent } from './songs/components/song-details/song-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},

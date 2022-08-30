@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { Song } from '../models/Song';
-import { SongService } from '../services/song.service';
-import { SongResponse } from '../models/responses/SongResponse';
+import { SongService } from '../../services/song.service';
+import { SongResponse } from '../../models/responses/SongResponse';
 
 @Component({
   selector: 'app-song-details',
