@@ -1,1 +1,97 @@
-<p>create-song works!</p>
+<div class="container">
+    <mat-stepper linear #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Fill song details</ng-template>
+            <div class="inputsForm">
+                <mat-form-field appearance="fill">
+                    <mat-label>Title</mat-label>
+                    <input matInput formControlName="titleCtrl" placeholder="Song title" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Origin title</mat-label>
+                    <input matInput formControlName="titleOriginCtrl" placeholder="Song title origin">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Key</mat-label>
+                    <input matInput formControlName="keyCtrl" placeholder="Ex. c / d / e ...">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Origin key</mat-label>
+                    <input matInput formControlName="keyOriginCtrl" placeholder="Ex. c / d / e ...">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Tempo</mat-label>
+                    <input matInput formControlName="tempoCtrl" placeholder="0-300">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Author</mat-label>
+                    <input matInput formControlName="authorCtrl" placeholder="Author">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Translator</mat-label>
+                    <input matInput formControlName="translatorCtrl" placeholder="Translator">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Copyright</mat-label>
+                    <input matInput formControlName="copyrightCtrl" placeholder="Copyright">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Based on</mat-label>
+                    <input matInput formControlName="basedOnCtrl" placeholder="Ex. Ps 100">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Group</mat-label>
+                    <input matInput formControlName="groupCtrl" placeholder="Group">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Type</mat-label>
+                    <input matInput formControlName="typeCtrl" placeholder="Type">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Url Polish version</mat-label>
+                    <input matInput formControlName="urlPlCtrl" placeholder="Polish version">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Url origin version</mat-label>
+                    <input matInput formControlName="urlOriginCtrl" placeholder="Origin version">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Url to drive</mat-label>
+                    <input matInput formControlName="urlDriveCtrl" placeholder="Url to drive">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Url to notes</mat-label>
+                    <input matInput formControlName="urlNotesCtrl" placeholder="Url to notes">
+                </mat-form-field>
+                <mat-checkbox color="accent" labelPosition="before" matInput formControlName="isReadyToUseCtrl">Song is ready to use</mat-checkbox>
+            </div>
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Fill lyric</ng-template>
+            <mat-form-field appearance="fill">
+              <mat-label>Address</mat-label>
+              <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                     required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Check song</ng-template>
+          <p>You are now done.</p>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+          </div>
+        </mat-step>
+    </mat-stepper>
+</div>

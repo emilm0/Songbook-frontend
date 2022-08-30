@@ -16,6 +16,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 
@@ -42,7 +43,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatListModule,
     MatTabsModule,
     MatRadioModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatStepperModule
   ]
 })
 export class AngularMaterialModule { }
