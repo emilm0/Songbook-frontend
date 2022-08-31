@@ -13,10 +13,14 @@
     @include basic-div;
     width: 100%;
     margin-top: $bar-height;
-    height: 100%;
-    padding: 5px;
 }
 
 .routerOutlet {
-    margin-top: 50px;
+    min-height: calc(100vh - $bar-height - $bar-height);
+    height: fit-content;
+    padding: 50px 10px 10px 10px;
+}
+.fotter {
+    position: relative;
+    bottom: 0;
 }
